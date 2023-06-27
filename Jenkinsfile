@@ -4,12 +4,11 @@ pipeline {
         stage('Build') { 
             agent {
                 docker {
-                    image 'python:2-alpine' 
+                    image 'python:3.7.2' 
                 }
             }
             steps {
-                sh 'python -m py_compile *.py' 
-                stash(name: 'compiled-results', includes: '*.py*') 
+                sh 'pipenv install' 
             }
         }
     }
