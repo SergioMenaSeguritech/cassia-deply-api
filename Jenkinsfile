@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Make Virtual Env') { 
             steps {
-                withPythonEnv('python3') {
+                withPythonEnv('/usr/bin/python3.8') {
                     sh 'pipenv install'
                 }
             }
