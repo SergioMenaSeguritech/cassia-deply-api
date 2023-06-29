@@ -2,7 +2,15 @@ import os
 
 from pydantic import BaseSettings
 from dotenv import load_dotenv
-load_dotenv()
+
+env = "qa"
+
+#Load the appropiate .env file
+
+if env == "dev":
+    load_dotenv()
+elif env == "qa":
+    load_dotenv(".env.qa")
 
 
 class Settings(BaseSettings):
