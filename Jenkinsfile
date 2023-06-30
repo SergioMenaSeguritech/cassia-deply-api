@@ -5,7 +5,7 @@ pipeline {
             steps {
                 withPythonEnv('/usr/bin/python3.8') {
                     sh 'pipenv --python /usr/bin/python3.8 install'
-                    sh 'nohup pipenv --python /usr/bin/python3.8 run uvicorn main:app --reload &'
+                    sh 'pipenv --python /usr/bin/python3.8 run uvicorn main:app --reload'
                 }
             }
         }
