@@ -4,8 +4,8 @@ pipeline {
         stage('Make Virtual Env') { 
             steps {
                 withPythonEnv('/usr/bin/python3.8') {
-                    sh 'pipenv install'
-                    sh 'pipenv run uvicorn main:app --reload'
+                    sh 'pipenv --python /usr/bin/python3.8 install'
+                    sh 'pipenv run uvicorn main:app --reload &'
                 }
             }
         }
