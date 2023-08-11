@@ -3,17 +3,17 @@ import os
 from pydantic import BaseSettings
 from dotenv import load_dotenv
 
-env = "qa"
-
-#Load the appropiate .env file
-
-if env == "dev":
-    load_dotenv()
-elif env == "qa":
-    load_dotenv(".env.qa")
+env = os.getenv('ENVIRONMENT', 'dev')
+dotenv_path = f'.env.{env}'
+load_dotenv(dotenv_path=dotenv_path, verbose=True)
 
 
 class Settings(BaseSettings):
+    dbp_name: str = os.getenv("DBP_NAME")
+    dbp_user: str = os.getenv('DBP_USER')
+    dbp_pass: str = os.getenv('DBP_PASS')
+    dbp_host: str = os.getenv('DBP_HOST')
+    dbp_port: str = os.getenv('DBP_PORT')
 
     db_name: str = os.getenv("DB_NAME")
     db_user: str = os.getenv('DB_USER')
@@ -27,12 +27,12 @@ class Settings(BaseSettings):
     db_zabbix_host: str = os.getenv('DB_ZABBIX_HOST')
     db_zabbix_port: str = os.getenv('DB_ZABBIX_PORT')
 
-    ssh_host = os.getenv("SSH_HOST")
-    ssh_port = os.getenv("SSH_PORT")
-    ssh_user = os.getenv("SSH_USER")
-    ssh_pass = os.getenv("SSH_PASS")
-    ssh_remote_bind_address = os.getenv("SSH_REMOTE_BIND_ADDRESS")
-    ssh_remote_bind_port = os.getenv("SSH_REMOTE_BIND_PORT")
+    ssh_host: str = os.getenv("SSH_HOST")
+    ssh_port: str = os.getenv("SSH_PORT")
+    ssh_user: str = os.getenv("SSH_USER")
+    ssh_pass: str = os.getenv("SSH_PASS")
+    ssh_remote_bind_address: str = os.getenv("SSH_REMOTE_BIND_ADDRESS")
+    ssh_remote_bind_port: str = os.getenv("SSH_REMOTE_BIND_PORT")
 
     secret_key: str = os.getenv('SECRET_KEY')
     token_expire: int = os.getenv('ACCESS_TOKEN_EXPIRE_MINUTES')
@@ -40,3 +40,5 @@ class Settings(BaseSettings):
 
     zabbix_api_token: str = os.getenv('ZABBIX_API_TOKEN')
     zabbix_server_url: str = os.getenv('ZABBIX_SERVER_URL')
+    env: str = f'{env}'
+

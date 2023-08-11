@@ -9,7 +9,7 @@ uvicorn = "*"
 sqlalchemy = "*"
 python-dotenv = "*"
 mysql-connector-python = "*"
-pydantic = {extras = ["email"], version = "*"}
+pydantic = {extras = ["email"], version = "<2"}
 passlib = {extras = ["bcrypt"], version = "*"}
 python-jose = {extras = ["cryptography"], version = "*"}
 python-multipart = "*"
@@ -21,7 +21,7 @@ mysqlclient = "*"
 [dev-packages]
 
 [requires]
-python_version = "3.8"
+python_version = "3.11"
 
 [scripts]
 server = "uvicorn main:app --reload"
