@@ -17,6 +17,10 @@ pyzabbix = "*"
 pandas = "*"
 sshtunnel = "*"
 mysqlclient = "*"
+rocketry = "*"
+aiofiles = "*"
+pythonping = "*"
+paramiko = "*"
 
 [dev-packages]
 
