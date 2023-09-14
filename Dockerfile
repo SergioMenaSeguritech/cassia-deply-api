@@ -17,5 +17,6 @@ COPY . /code/
 EXPOSE 8000
 
 
+
 #It is the command that will start and run the FastAPI application container
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0"]
