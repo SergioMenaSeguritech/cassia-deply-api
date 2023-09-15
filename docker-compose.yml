@@ -4,8 +4,8 @@ version: '3.8'
 
 services:
   backend:
-    container_name: cassia-api-backend-qa
-    image: cassia-api-backend-qa
+    container_name: cassia-api-backend-main
+    image: cassia-api-backend-main
     build: .
     command: uvicorn main:app --host 0.0.0.0
     volumes:
